@@ -21,7 +21,10 @@ exports.handler = async (event, context) => {
     endpoint: event.requestContext.domainName + '/' + event.requestContext.stage
   });
   
-  const postData = JSON.parse(event.body).data;
+  const postData = JSON.stringify({
+    original: JSON.parse(event.body).data,
+    from: event.requestContext.connectionId
+  });
   
   const postCalls = connectionData.Items.map(async ({ connectionId }) => {
     try {
