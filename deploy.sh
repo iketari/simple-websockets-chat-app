@@ -1,0 +1,2 @@
+#!/bin/sh
+sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket preoccupyapp && sam deploy --template-file packaged.yaml --stack-name simple-websocket-chat-app --capabilities CAPABILITY_IAM
